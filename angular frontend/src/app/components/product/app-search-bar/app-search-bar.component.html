@@ -1,0 +1,15 @@
+<div class="search-bar-container">
+  <div class="search-bar">
+    <input [(ngModel)]="searchQuery" placeholder="Search term..." />
+
+    <select [(ngModel)]="searchField">
+      <option value="id">ID</option>
+      <option value="productName">Name</option>
+      <option value="category">Category</option>
+    </select>
+
+    <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+  </div>
+
+  <button mat-button color="warn" (click)="logout()">Logout</button>
+</div>

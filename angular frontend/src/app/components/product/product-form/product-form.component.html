@@ -1,0 +1,42 @@
+<!-- Toggle Button -->
+<button mat-raised-button color="accent" (click)="showForm = !showForm">
+    {{ showForm ? 'Hide' : 'Add New Product' }}
+  </button>
+  
+  <!-- Product Form -->
+  <div class="product-form" *ngIf="showForm">
+    <form (ngSubmit)="submitForm()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Product Name</mat-label>
+        <input matInput [(ngModel)]="newProduct.productName" name="productName" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" [(ngModel)]="newProduct.price" name="price" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Units in Stock</mat-label>
+        <input matInput type="number" [(ngModel)]="newProduct.unitsInStock" name="unitsInStock" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Category</mat-label>
+        <mat-select [(ngModel)]="newProduct.category" name="category" required>
+          <mat-option *ngFor="let category of productCategories" [value]="category">
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="isSaving">
+        Save Product
+      </button>
+  
+      <mat-progress-bar *ngIf="isSaving" mode="indeterminate" color="accent"></mat-progress-bar>
+  
+      <div class="success" *ngIf="successMessage">{{ successMessage }}</div>
+      <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+  </div>

@@ -1,0 +1,6 @@
+@UserManagementAPI_HostAddress = http://localhost:5163
+
+GET {{UserManagementAPI_HostAddress}}/http://localhost:7112/api/dev/ping-db
+Accept: application/json
+
+###
